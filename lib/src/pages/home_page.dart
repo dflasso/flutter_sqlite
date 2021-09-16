@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> {
       textCapitalization: TextCapitalization.sentences,
       decoration: InputDecoration(
         hintText: 'Ingrese el dato',
-        labelText: 'Nombre Deporte',
+        labelText: 'Marca Bicicleta',
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
       ),
       onChanged: (value) {
@@ -57,7 +57,7 @@ class _HomePageState extends State<HomePage> {
       keyboardType: TextInputType.number,
       decoration: InputDecoration(
         hintText: 'Ingrese el dato',
-        labelText: 'Rendimiento %',
+        labelText: 'RIN',
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
       ),
       onChanged: (value) {
@@ -72,7 +72,7 @@ class _HomePageState extends State<HomePage> {
       controller: _inputFieldDateController,
       decoration: InputDecoration(
         hintText: 'Ingrese la fecha',
-        labelText: 'Fecha Creación ',
+        labelText: 'Fecha Fabricación ',
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
       ),
       onTap: () {
@@ -125,7 +125,7 @@ class _HomePageState extends State<HomePage> {
   Widget _CheckBoxCustom() {
     return Row(
       children: <Widget>[
-        const Text('Deporte Popular ?'),
+        const Text('¿ Bicileta Montañera ?'),
         Checkbox(
             value: isChecked,
             onChanged: (bool? value) {
