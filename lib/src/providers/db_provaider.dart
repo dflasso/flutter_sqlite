@@ -45,21 +45,33 @@ class DBProvider {
     return response;
   }
 
-  Future<List<BasicModel>> getAllRegisters() async {
+  Future<List<BasicModel>?> getAllRegisters() async {
     final db = await database;
     final res = await db!.query('BasicModel');
 
-    List<BasicModel> data = [];
-    if (res.isNotEmpty) {
-      for (var element in res) {
-        data.add(BasicModel(
-            paramText: element['paramText'].toString(),
-            paramNum: double.parse(element['paramNum'].toString()),
-            paramBool: true,
-            paramDate: element['paramDate'].toString()));
-      }
-    }
+    return res.isNotEmpty
+        ? res
+            .map((e) => BasicModel(
+                id: int.parse(e['id'].toString()),
+                paramText: e['paramText'].toString(),
+                paramNum: double.parse(e['paramNum'].toString()),
+                paramBool: true,
+                paramDate: e['paramText'].toString()))
+            .toList()
+        : null;
+  }
 
-    return data;
+  Future<int> updateModel(BasicModel model) async {
+    final db = await database;
+    final res = await db!.update('BasicModel', model.toJson(),
+        where: 'id = ?', whereArgs: [model.id]);
+    return res;
+  }
+
+  Future<int> deleteModel(BasicModel model) async {
+    final db = await database;
+    final res =
+        await db!.delete('BasicModel', where: 'id = ?', whereArgs: [model.id]);
+    return res;
   }
 }
